@@ -46,7 +46,7 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Boutons */
+        /* Boutons de la Page 1 */
         .btn-container {
             margin-top: 30px;
             display: flex;
@@ -56,7 +56,7 @@
             position: relative;
         }
 
-        button, .next-btn {
+        button {
             padding: 12px 25px;
             font-size: 18px;
             font-weight: bold;
@@ -82,11 +82,46 @@
             position: absolute;
         }
 
-        .next-btn {
+        /* Alignement et Styles des Boutons de Navigation (Pages 2 à 5) */
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            background-color: #f0f0f0;
+            color: #777;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            flex: 1;
+            transition: background-color 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .next-btn-nav {
             background-color: #ff758f;
             color: white;
-            margin-top: 20px;
-            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            flex: 2;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .next-btn-nav:hover {
+            background-color: #ff5c8a;
+            transform: scale(1.02);
         }
 
         /* Pages */
@@ -187,7 +222,10 @@
                 <option value="Après-midi 🍦">Après-midi 🍦</option>
                 <option value="Soirée ✨">Soirée ✨</option>
             </select>
-            <button class="next-btn" onclick="validateDatePage()">Suivant ➡️</button>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="nextPage(1)">⬅️ Retour</button>
+                <button class="next-btn-nav" onclick="validateDatePage()">Suivant ➡️</button>
+            </div>
         </div>
 
         <div id="page3" class="page">
@@ -195,6 +233,9 @@
             <h2>On va où ?</h2>
             <p>Sélectionne l'endroit idéal :</p>
             <div class="grid-options">
+                <div class="option-card" id="lieu-SurPlace" onclick="selectSingleLieu('Sur Place ✨')">
+                    <span class="card-emoji">🍇</span> Sur Place
+                </div>
                 <div class="option-card" id="lieu-maison-epi" onclick="selectSingleLieu('Maison (Epinay) 🏠')">
                     <span class="card-emoji">🏠</span> Maison (Epinay)
                 </div>
@@ -213,13 +254,11 @@
                 <div class="option-card" id="lieu-avions" onclick="selectSingleLieu('Parc des avions ✈️')">
                     <span class="card-emoji">✈️</span> Parc des avions
                 </div>
-                <div class="option-card" id="lieu-Place" onclick="selectSingleLieu('Sur Place 🚗')">
-                    <span class="card-emoji">🚗</span> Sur Place
-                </div>
-                
-                
             </div>
-            <button class="next-btn" onclick="validateLieuPage()">Suivant ➡️</button>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="nextPage(2)">⬅️ Retour</button>
+                <button class="next-btn-nav" onclick="validateLieuPage()">Suivant ➡️</button>
+            </div>
         </div>
 
         <div id="page4" class="page">
@@ -227,8 +266,11 @@
             <h2>Qu'est-ce qu'on mange ?</h2>
             <p id="food-instruction">Sélectionne tes envies :</p>
             <div class="grid-options">
+                <div class="option-card food-opt" onclick="toggleFood(this, 'Sakura 🍇')">
+                    <span class="card-emoji">🍇</span> Sakura
+                </div>
                 <div class="option-card food-opt" onclick="toggleFood(this, 'McDonald\'s 🍟')">
-                    <span class="card-emoji">🍟</span> McDonald\'s
+                    <span class="card-emoji">🍟</span> McDonald's
                 </div>
                 <div class="option-card food-opt" onclick="toggleFood(this, 'Burger King 👑')">
                     <span class="card-emoji">👑</span> Burger King
@@ -251,11 +293,14 @@
                 <div class="option-card food-opt" onclick="toggleFood(this, 'Pizza 🍕')">
                     <span class="card-emoji">🍕</span> Pizza
                 </div>
-                <div class="option-card food-opt" onclick="toggleFood(this, 'Sakura 🍣')">
-                    <span class="card-emoji">🍣</span> Sakura
+                <div class="option-card food-opt" onclick="toggleFood(this, 'Sushi 🍣')">
+                    <span class="card-emoji">🍣</span> Sushi
                 </div>
             </div>
-            <button class="next-btn" onclick="generateSummary()">Valider 🐷❤️</button>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="nextPage(3)">⬅️ Retour</button>
+                <button class="next-btn-nav" onclick="generateSummary()">Valider 🐷❤️</button>
+            </div>
         </div>
 
         <div id="page5" class="page">
@@ -268,7 +313,10 @@
                 <p><strong>Où :</strong> <span id="summaryLieu"></span></p>
                 <p><strong>Au menu :</strong> <span id="summaryFood"></span></p>
             </div>
-            <button class="next-btn" onclick="sendViaEmail()">Le mettre au courent du programme par mail ✉️</button>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="nextPage(4)">Modifier ⚙️</button>
+                <button class="next-btn-nav" onclick="sendViaEmail()">Partager par mail ✉️</button>
+            </div>
         </div>
 
     </div>
@@ -283,7 +331,6 @@
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById('page' + pageNumber).classList.add('active');
             
-            // Si on arrive sur la page nourriture, mettre à jour l'instruction du nombre minimum
             if(pageNumber === 4) {
                 updateFoodInstruction();
             }
@@ -313,7 +360,7 @@
             noBtn.style.top = randomY + 'px';
         }
 
-        // Validation de la date avec les messages requis
+        // Validation de la date avec blocage
         function validateDatePage() {
             const dateValue = document.getElementById('dateInput').value;
             if (!dateValue) {
@@ -332,10 +379,10 @@
             oneWeekLater.setHours(0,0,0,0);
 
             if (chosenDate < today) {
-                alert("Hé ! Tu essaies de voyager dans le temps ? ⏰ Choisis une date nrml stp mon amour !");
+                alert("Hé ! Tu essaies de voyager dans le temps ? ⏰ Choisis une date future !");
                 return;
             } else if (chosenDate > oneWeekLater) {
-                alert("waaaaa la vérité t'abuse wsh , c'est super loin ça ! Tu veux pas qu'on se voie plus tôt ? 🗓️");
+                alert("Oula, c'est super loin ça ! Tu veux pas qu'on se voie plus tôt ? 🗓️");
                 return;
             }
 
@@ -346,8 +393,6 @@
         function selectSingleLieu(lieuName) {
             document.querySelectorAll('#page3 .option-card').forEach(card => card.classList.remove('selected'));
             selectedLieu = lieuName;
-            
-            // Trouver la carte cliquée pour lui mettre la classe sélectionnée
             event.currentTarget.classList.add('selected');
         }
 
@@ -364,7 +409,7 @@
             const time = document.getElementById('timeInput').value;
             if (time.includes("Matin")) return 3;
             if (time.includes("Midi")) return 2;
-            return 1; // Après-midi ou Soirée
+            return 1;
         }
 
         function updateFoodInstruction() {
@@ -386,7 +431,7 @@
         function generateSummary() {
             const required = getRequiredFoodCount();
             if (selectedFood.length < required) {
-                alert(`les calculs sont pas bons ! Tu dois choisir au moins ${required} option(s) de nourriture pour ce moment de la journée ! 🐷`);
+                alert(`Gourmande ! Tu dois choisir au moins ${required} option(s) de nourriture pour ce moment de la journée ! 🐷`);
                 return;
             }
 
@@ -401,13 +446,15 @@
 
             nextPage(5);
         }
+
+        // Partager via mail
         function sendViaEmail() {
             const date = document.getElementById('summaryDate').innerText;
             const time = document.getElementById('summaryTime').innerText;
             const lieu = document.getElementById('summaryLieu').innerText;
             const food = document.getElementById('summaryFood').innerText;
 
-            const emailDestinataire = "lekrs97310@gmail.com"; // 👈 Mets ton adresse mail ici
+            const emailDestinataire = "yvontkerryens@gmail.com"; // 👈 CHANGE ICI PAR TON EMAIL
             const sujet = "Notre Date Récapitulatif ! 🐷❤️";
             const message = `Coucou ! Voici le programme retenu :\n\n📅 Quand : ${date}\n⏰ Moment : ${time}\n📍 Où : ${lieu}\n🍔 Au menu : ${food}\n\nTrop hâte ! ✨`;
 
