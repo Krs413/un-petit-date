@@ -82,7 +82,7 @@
             position: absolute;
         }
 
-        /* Alignement et Styles des Boutons de Navigation (Pages 2 à 5) */
+        /* Alignement et Styles des Boutons de Navigation */
         .nav-buttons {
             display: flex;
             gap: 15px;
@@ -145,7 +145,7 @@
             background-color: #fffbfb;
         }
 
-        /* Grilles d'options (Nourriture et Lieux) */
+        /* Grilles d'options */
         .grid-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -228,46 +228,13 @@
             </div>
         </div>
 
-        <div id="page3" class="page">
-            <div class="pig-emoji">📍🐷</div>
-            <h2>On va où ?</h2>
-            <p>Sélectionne l'endroit idéal :</p>
-            <div class="grid-options">
-                <div class="option-card" id="lieu-SurPlace" onclick="selectSingleLieu('Sur Place ✨')">
-                    <span class="card-emoji">🍇</span> Sur Place
-                </div>
-                <div class="option-card" id="lieu-maison-epi" onclick="selectSingleLieu('Maison (Epinay) 🏠')">
-                    <span class="card-emoji">🏠</span> Maison (Epinay)
-                </div>
-                <div class="option-card" id="lieu-maison-sav" onclick="selectSingleLieu('Maison (Savigny) 🏡')">
-                    <span class="card-emoji">🏡</span> Maison (Savigny)
-                </div>
-                <div class="option-card" id="lieu-templiers" onclick="selectSingleLieu('Parc des Templiers 🌳')">
-                    <span class="card-emoji">🌳</span> Parc des Templiers
-                </div>
-                <div class="option-card" id="lieu-morsang" onclick="selectSingleLieu('Parc de Morsang 🍃')">
-                    <span class="card-emoji">🍃</span> Parc de Morsang
-                </div>
-                <div class="option-card" id="lieu-stade" onclick="selectSingleLieu('Parking stade 🚗')">
-                    <span class="card-emoji">🚗</span> Parking stade
-                </div>
-                <div class="option-card" id="lieu-avions" onclick="selectSingleLieu('Parc des avions ✈️')">
-                    <span class="card-emoji">✈️</span> Parc des avions
-                </div>
-            </div>
-            <div class="nav-buttons">
-                <button class="back-btn" onclick="nextPage(2)">⬅️ Retour</button>
-                <button class="next-btn-nav" onclick="validateLieuPage()">Suivant ➡️</button>
-            </div>
-        </div>
-
         <div id="page4" class="page">
             <div class="pig-emoji">🍔🍕</div>
             <h2>Qu'est-ce qu'on mange ?</h2>
             <p id="food-instruction">Sélectionne tes envies :</p>
             <div class="grid-options">
-                <div class="option-card food-opt" onclick="toggleFood(this, 'Sakura 🍇')">
-                    <span class="card-emoji">🍇</span> Sakura
+                <div class="option-card food-opt" onclick="toggleFood(this, 'Kizuna 🍜')">
+                    <span class="card-emoji">🍜</span> Kizuna
                 </div>
                 <div class="option-card food-opt" onclick="toggleFood(this, 'McDonald\'s 🍟')">
                     <span class="card-emoji">🍟</span> McDonald's
@@ -298,7 +265,40 @@
                 </div>
             </div>
             <div class="nav-buttons">
-                <button class="back-btn" onclick="nextPage(3)">⬅️ Retour</button>
+                <button class="back-btn" onclick="nextPage(2)">⬅️ Retour</button>
+                <button class="next-btn-nav" onclick="validateFoodPage()">Suivant ➡️</button>
+            </div>
+        </div>
+
+        <div id="page3" class="page">
+            <div class="pig-emoji">📍🐷</div>
+            <h2>On va où ?</h2>
+            <p>Sélectionne l'endroit idéal :</p>
+            <div class="grid-options">
+                <div class="option-card" id="lieu-SurPlace" onclick="selectSingleLieu('Sur Place 📍')">
+                    <span class="card-emoji">📍</span> Sur Place
+                </div>
+                <div class="option-card" id="lieu-maison-epi" onclick="selectSingleLieu('Maison (Epinay) 🏠')">
+                    <span class="card-emoji">🏠</span> Maison (Epinay)
+                </div>
+                <div class="option-card" id="lieu-maison-sav" onclick="selectSingleLieu('Maison (Savigny) 🏡')">
+                    <span class="card-emoji">🏡</span> Maison (Savigny)
+                </div>
+                <div class="option-card" id="lieu-templiers" onclick="selectSingleLieu('Parc des Templiers 🌳')">
+                    <span class="card-emoji">🌳</span> Parc des Templiers
+                </div>
+                <div class="option-card" id="lieu-morsang" onclick="selectSingleLieu('Parc de Morsang 🍃')">
+                    <span class="card-emoji">🍃</span> Parc de Morsang
+                </div>
+                <div class="option-card" id="lieu-stade" onclick="selectSingleLieu('Parking stade 🚗')">
+                    <span class="card-emoji">🚗</span> Parking stade
+                </div>
+                <div class="option-card" id="lieu-avions" onclick="selectSingleLieu('Parc des avions ✈️')">
+                    <span class="card-emoji">✈️</span> Parc des avions
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="nextPage(4)">⬅️ Retour</button>
                 <button class="next-btn-nav" onclick="generateSummary()">Valider 🐷❤️</button>
             </div>
         </div>
@@ -314,7 +314,7 @@
                 <p><strong>Au menu :</strong> <span id="summaryFood"></span></p>
             </div>
             <div class="nav-buttons">
-                <button class="back-btn" onclick="nextPage(4)">Modifier ⚙️</button>
+                <button class="back-btn" onclick="nextPage(3)">Modifier ⚙️</button>
                 <button class="next-btn-nav" onclick="sendViaEmail()">Partager par mail ✉️</button>
             </div>
         </div>
@@ -326,17 +326,16 @@
         let selectedLieu = "";
         let hasAlertedNo = false;
 
-        // Changer de page
         function nextPage(pageNumber) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById('page' + pageNumber).classList.add('active');
             
+            // Mise à jour de l'instruction si on arrive sur la nourriture
             if(pageNumber === 4) {
                 updateFoodInstruction();
             }
         }
 
-        // Action sur le bouton Non
         function triggerNo() {
             if(!hasAlertedNo) {
                 alert("T'es sérieuse ou quoi là ? 🤣");
@@ -345,38 +344,29 @@
             moveNoButton();
         }
 
-        // Faire fuir le bouton "Non"
         function moveNoButton() {
             const noBtn = document.getElementById('noBtn');
             const container = document.querySelector('.container');
-            
             const maxX = container.clientWidth - noBtn.clientWidth - 40;
             const maxY = container.clientHeight - noBtn.clientHeight - 40;
-
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
-
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
 
-        // Validation de la date avec blocage
         function validateDatePage() {
             const dateValue = document.getElementById('dateInput').value;
             if (!dateValue) {
                 alert("Choisis une petite date d'abord ! 😉");
                 return;
             }
-
             const chosenDate = new Date(dateValue);
             chosenDate.setHours(0,0,0,0);
-            
             const today = new Date();
             today.setHours(0,0,0,0);
-
             const oneWeekLater = new Date();
             oneWeekLater.setDate(today.getDate() + 7);
-            oneWeekLater.setHours(0,0,0,0);
 
             if (chosenDate < today) {
                 alert("Hé ! Tu essaies de voyager dans le temps ? ⏰ Choisis une date future !");
@@ -385,26 +375,9 @@
                 alert("Oula, c'est super loin ça ! Tu veux pas qu'on se voie plus tôt ? 🗓️");
                 return;
             }
-
-            nextPage(3);
+            nextPage(4); // Vers nourriture
         }
 
-        // Gestion de la sélection unique pour le lieu
-        function selectSingleLieu(lieuName) {
-            document.querySelectorAll('#page3 .option-card').forEach(card => card.classList.remove('selected'));
-            selectedLieu = lieuName;
-            event.currentTarget.classList.add('selected');
-        }
-
-        function validateLieuPage() {
-            if (!selectedLieu) {
-                alert("Choisis un petit endroit d'abord ! 📍");
-                return;
-            }
-            nextPage(4);
-        }
-
-        // Ajuster le texte d'instruction pour les repas minimums
         function getRequiredFoodCount() {
             const time = document.getElementById('timeInput').value;
             if (time.includes("Matin")) return 3;
@@ -417,7 +390,6 @@
             document.getElementById('food-instruction').innerText = `Pour ce moment de la journée, choisis au moins ${req} option(s) :`;
         }
 
-        // Sélection de la nourriture
         function toggleFood(element, foodName) {
             element.classList.toggle('selected');
             if (selectedFood.includes(foodName)) {
@@ -427,11 +399,24 @@
             }
         }
 
-        // Générer le récapitulatif
-        function generateSummary() {
+        function validateFoodPage() {
             const required = getRequiredFoodCount();
             if (selectedFood.length < required) {
-                alert(`Gourmande ! Tu dois choisir au moins ${required} option(s) de nourriture pour ce moment de la journée ! 🐷`);
+                alert(`Gourmande ! Tu dois choisir au moins ${required} option(s) de nourriture ! 🐷`);
+                return;
+            }
+            nextPage(3); // Vers lieu
+        }
+
+        function selectSingleLieu(lieuName) {
+            document.querySelectorAll('#page3 .option-card').forEach(card => card.classList.remove('selected'));
+            selectedLieu = lieuName;
+            event.currentTarget.classList.add('selected');
+        }
+
+        function generateSummary() {
+            if (!selectedLieu) {
+                alert("Choisis un petit endroit d'abord ! 📍");
                 return;
             }
 
@@ -447,7 +432,6 @@
             nextPage(5);
         }
 
-        // Partager via mail
         function sendViaEmail() {
             const date = document.getElementById('summaryDate').innerText;
             const time = document.getElementById('summaryTime').innerText;
